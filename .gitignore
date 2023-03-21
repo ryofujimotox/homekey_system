@@ -38,3 +38,5 @@ composer.lock
 swagger-*
 
 .env
+
+app_honban.php

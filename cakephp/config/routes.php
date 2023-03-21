@@ -18,7 +18,7 @@ return static function (RouteBuilder $routes) {
                 ],
             ]
         ]);
-        // $builder->fallbacks();
+        $builder->fallbacks();
     });
 
     $routes->prefix('V1', function (RouteBuilder $builder) {
