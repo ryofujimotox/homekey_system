@@ -87,7 +87,9 @@ function get_config_name() {
             return 'app_honban';
         }
     } else {
-        if (is_included_docRoot(['public_html'])) {
+        if (is_included_docRoot(['var/www'])) {
+            return 'app_docker';
+        } else {
             return 'app_honban';
         }
     }

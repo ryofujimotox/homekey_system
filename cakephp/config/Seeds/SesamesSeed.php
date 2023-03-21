@@ -6,10 +6,7 @@ use Migrations\AbstractSeed;
 class SesamesSeed extends AbstractSeed {
     public function run():void {
         $date = '2023-01-01 00:00:00';
-        $crypt_key = env('SAMPLE_SESAME_UUID');
-        // $siper = openssl_encrypt('rexaI8CsPs9jOWooKAp7C8MqDc0ydJrM18q8cqeF', 'AES-128-ECB', $crypt_key),
-        // $p_t = openssl_decrypt($siper, 'AES-128-ECB', $crypt_key);
-
+        $crypt_key = env('SECURITY_SALT');
         $data = [
             [
                 'created' => $date,
