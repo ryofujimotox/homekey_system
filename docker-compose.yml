@@ -1,0 +1,49 @@
+# Use root/example as user/password credentials
+version: '3'
+
+volumes:
+  trashvolume:
+
+services: 
+  osphp:
+    platform: 'linux/x86_64'
+    build: ./docker
+    ports:                     
+      - 8080:80    
+      # - 9000:9000   
+    volumes:
+      - ./:/var/www
+      - trashvolume:/var/www/cakephp/vendor
+      - ./docker/php.ini:/etc/php.ini
+      - ./docker/httpd.conf:/etc/httpd/conf/httpd.conf
+
+  db:
+    platform: 'linux/x86_64'
+    image: mysql:8
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - 13306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpw
+    depends_on:
+      - osphp
+
+  phpmyadmin:
+    platform: 'linux/x86_64'
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8888:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    depends_on:
+      - osphp
