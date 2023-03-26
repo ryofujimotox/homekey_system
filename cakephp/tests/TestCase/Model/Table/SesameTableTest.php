@@ -11,6 +11,7 @@ class SesameTableTest extends TestCase {
 
     public $fixtures = [
         'app.Sesames',
+        'app.Rooms',
     ];
 
     public function setUp(): void {
@@ -25,9 +26,9 @@ class SesameTableTest extends TestCase {
      *
      *
      */
-    public function testInformationIndex() {
+    public function testCurrentStatus() {
         $sesame = $this->Sesames->find()->first();
-        pr($sesame->currentStatus());
-        exit;
+        $got_status = (bool) $sesame->currentStatus();
+        $this->assertEquals(true, $got_status);
     }
 }

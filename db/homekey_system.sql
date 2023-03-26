@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Mar 21, 2023 at 11:24 AM
+-- Generation Time: Mar 26, 2023 at 06:35 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.0.19
 
@@ -32,8 +32,8 @@ CREATE TABLE `rooms` (
   `created` datetime NOT NULL COMMENT '作成日時',
   `updated` datetime NOT NULL COMMENT '更新日時',
   `status` enum('publish','draft') NOT NULL DEFAULT 'publish' COMMENT '公開状態',
-  `sesame_id` int NOT NULL,
-  `password` varchar(10) NOT NULL
+  `sesame_id` int NOT NULL COMMENT 'セサミID',
+  `password` varchar(500) NOT NULL COMMENT '部屋パスワード'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -47,9 +47,9 @@ CREATE TABLE `sesames` (
   `created` datetime NOT NULL COMMENT '作成日時',
   `updated` datetime NOT NULL COMMENT '更新日時',
   `status` enum('publish','draft') NOT NULL DEFAULT 'publish' COMMENT '公開状態',
-  `uuid` varchar(500) DEFAULT NULL,
-  `secret_key` varchar(500) DEFAULT NULL,
-  `api_key` varchar(500) DEFAULT NULL
+  `uuid` varchar(500) NOT NULL COMMENT 'セサミUUID',
+  `secret_key` varchar(500) NOT NULL COMMENT 'セサミ秘密鍵',
+  `api_key` varchar(500) NOT NULL COMMENT 'セサミAPI鍵'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --

@@ -42,13 +42,15 @@ class Initial extends AbstractMigration {
                 'null' => false,
             ])
             ->addColumn('sesame_id', 'integer', [
+                'comment' => 'セサミID',
                 'default' => null,
                 'limit' => null,
                 'null' => false,
             ])
             ->addColumn('password', 'string', [
+                'comment' => '部屋パスワード',
                 'default' => null,
-                'limit' => 10,
+                'limit' => 500,
                 'null' => false,
             ])
             ->addIndex(
@@ -87,19 +89,22 @@ class Initial extends AbstractMigration {
                 'null' => false,
             ])
             ->addColumn('uuid', 'string', [
+                'comment' => 'セサミUUID',
                 'default' => null,
                 'limit' => 500,
-                'null' => true,
+                'null' => false,
             ])
             ->addColumn('secret_key', 'string', [
+                'comment' => 'セサミ秘密鍵',
                 'default' => null,
                 'limit' => 500,
-                'null' => true,
+                'null' => false,
             ])
             ->addColumn('api_key', 'string', [
+                'comment' => 'セサミAPI鍵',
                 'default' => null,
                 'limit' => 500,
-                'null' => true,
+                'null' => false,
             ])
             ->create();
     }

@@ -17,13 +17,4 @@ class SesamesTable extends AppTable {
         // 部屋情報
         $this->hasMany('Rooms');
     }
-
-     /**
-     * entityを変換する。
-     */
-    public function toApiList($data): array {
-        return [
-            'id' => $data['id'],
-        ];
-    }
 }
